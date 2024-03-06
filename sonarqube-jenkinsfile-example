@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    tools {
+        maven 'MAVEN'
+    }
+    stages {
+        stage('git checkout') {
+            steps {
+                git 'https://github.com/aniketmore620/Banking-project.git'
+            }
+        }
+        stage('maven package') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('sonar analysis') {
+            steps {
+                script {
+                    def mvnHome = tool name: 'MAVEN', type: 'maven'
+                    withSonarQubeEnv(credentialsId: 'sonar-token', installationName: 'sonar') {
+                        sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=test_server -Dsonar.projectName='test_server'"
+                    }
+                }
+            }
+        }
+    }
+}
