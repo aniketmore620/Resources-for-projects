@@ -1,4 +1,5 @@
-version: "3"
+### docker-compose file sonarqube installation ####   scroll down for docker_container-commmand
+  version: "3"
 services:
   sonarqube:
     image: sonarqube:community
@@ -30,3 +31,7 @@ volumes:
   sonarqube_logs:
   postgresql:
   postgresql_data:
+
+## install using container###
+docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+## 
