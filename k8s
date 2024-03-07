@@ -1,0 +1,1 @@
+add this to the file "jenkins ALL=(ALL) NOPASSWD: /usr/bin/kubectl" # to give Permission to jenkins to do k8s tasks
