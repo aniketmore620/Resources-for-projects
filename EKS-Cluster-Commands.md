@@ -13,3 +13,8 @@ eksctl create cluster --name demo-cluster --region us-east-1
 ```
 eksctl delete cluster --name demo-cluster --region us-east-1
 ```
+
+## To Get Kubeconfig file on instance After creating Eks through Terraform
+
+---
+aws eks --region us-east-1 update-kubeconfig --name devopsshack-cluster
